@@ -29,13 +29,19 @@ const Agence = () => {
       scrollTrigger:{
         trigger: imageDivRef.current,
         start: 'top 35%',
-        end: 'top -45%',
+        end: 'top -65%',
         pin: true,
+        pinSpacing: true,
+        pinReparent: true,
+        pinType: "transform",
+        scrub: 1,
+        anticipatePin: 1,
+        invalidateOnRefresh: true,
         onUpdate:(elem)=>{
           let imageIndex;
 
           if(elem.progress<1){
-            imageIndex = Math.floor(elem.progress* imageArray.length);
+            imageIndex = Math.floor(elem.progress * imageArray.length);
           }else{
             imageIndex = imageArray.length -1
           }
@@ -46,9 +52,9 @@ const Agence = () => {
   })
 
   return (
-    <div>
-      <div className="section1">
-        <div ref={imageDivRef} className="absolute overflow-hidden h-[20vw] rounded-3xl w-[15vw] top-70 left-[30vw]">
+    <div className="parent">
+      <div id="page1" className="py-1">
+        <div ref={imageDivRef} className="absolute overflow-hidden h-[22vw] rounded-3xl w-[15vw] top-96 left-[30vw]">
           <img ref={imageRef}
             className="h-full object-cover w-full"
             src="https://i.redd.it/tanjiro-kamado-demon-slayer-vs-hidan-naruto-shippuden-v0-wn618pjifced1.jpg?width=800&format=pjpg&auto=webp&s=7b8258a45b4477203c5393f85ca9b28288fc2dd3"
@@ -74,7 +80,7 @@ const Agence = () => {
           </div>
         </div>
       </div>
-      <div className="section2 h-screen"></div>
+      <div id="page2" className="h-screen"></div>
     </div>
   );
 };
