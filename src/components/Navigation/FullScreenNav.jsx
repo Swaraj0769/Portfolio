@@ -1,79 +1,109 @@
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
-import React, { useContext, useRef } from "react";
-import { NavbarContext } from "../../context/NavContext";
+import { useGSAP } from '@gsap/react'
+import gsap from 'gsap'
+import React, { useContext, useEffect, useRef, useState } from 'react'
+import { NavbarContext } from '../../context/NavContext'
 
 const FullScreenNav = () => {
-    const fullNavLinkRef = useRef(null)
+    const fullNavLinksRef = useRef(null)
     const fullScreenRef = useRef(null)
 
     const [navOpen, setNavOpen] = useContext(NavbarContext)
 
-    useGSAP(function () {
-    const tl = gsap.timeline()    
-        tl.from(".stairring", {
-            delay:1,
+
+    function gsapAnimation() {
+        const tl = gsap.timeline()
+        tl.to('.fullscreennav', {
+            display: 'block'
+        })
+        tl.to('.stairing', {
+            delay: 0.2,
+            height: '100%',
+            stagger: {
+                amount: -0.3
+            }
+        })
+        tl.to('.link', {
+            opacity: 1,
+            rotateX: 0,
+            rotate:45,
+            stagger: {
+                amount: 0.3
+            }
+        })
+        tl.to('.link2', {
+            opacity: 1,
+            rotateX: 0,
+            rotate: -40,
+            stagger: {
+                amount: -0.2
+            }
+        })
+        tl.to('.navlink', {
+            opacity: 1
+        })
+        tl.to('.textAnimation',{
+            x:300,
+            stagger:{
+              amount:0.2
+            }
+        })
+    }
+    function gsapAnimationReverse() {
+        const tl = gsap.timeline()
+        tl.to('.link', {
+            opacity: 0,
+            rotateX: 90,
+            stagger: {
+                amount: 0.1
+            }
+        })
+        tl.to('.stairing', {
             height: 0,
             stagger: {
-                amount: -0.25
+                amount: 0.1
             }
         })
-        tl.from(fullNavLinkRef.current,{
-            opacity:0
+        tl.to('.navlink', {
+            opacity: 0
         })
-        tl.from('.link',{
-            opacity:0,
-            rotate: 45,
-            xPercent:50
+        tl.to('.fullscreennav', {
+            display: 'none',
         })
-        tl.from('.link2',{
-            opacity:0,
-            rotate: -45,
-            xPercent:-50
-        })
-        tl.from('.textAnimation',{
-            x:500,
-            stagger:{
-                amount: -0.35
-            }
-        })
+    }
 
-        tl.pause()
-        if(navOpen){
-            fullScreenRef.current.style.display = 'block'
-            tl.play()
-        }else{
-            fullScreenRef.current.style.display = 'none'
-            tl.reverse()
+
+    useGSAP(function () {
+        if (navOpen) {
+
+            gsapAnimation()
+        } else {
+
+            gsapAnimationReverse()
+
         }
-    },[navOpen]);
+    }, [navOpen])
 
-  return (
-    <div ref={fullScreenRef}
-      id="fullscreennav"
-      className="z-500 h-screen overflow-x-hidden w-full absolute">
-
-      <div className="h-screen w-full fixed">
-        <div className="h-full w-full flex">
-          <div className="stairring h-full w-1/5 bg-red-700"></div>
-          <div className="stairring h-full w-1/5 bg-red-700"></div>
-          <div className="stairring h-full w-1/5 bg-red-700"></div>
-          <div className="stairring h-full w-1/5 bg-red-700"></div>
-          <div className="stairring h-full w-1/5 bg-red-700"></div>
-        </div>
-      </div>
-
-      <div ref={fullNavLinkRef} className="relative">
-        <div className=" flex w-full justify-between items-start">
-          <div className="p-1">
-            <div>
+    return (
+        <div ref={fullScreenRef} id='fullscreennav' className='fullscreennav hidden text-white overflow-hidden h-screen w-full z-50 absolute'>
+            <div className='h-screen w-full fixed'>
+                <div className='h-full w-full flex'>
+                    <div className='stairing h-full w-1/5 bg-black'></div>
+                    <div className='stairing h-full w-1/5 bg-black'></div>
+                    <div className='stairing h-full w-1/5 bg-black'></div>
+                    <div className='stairing h-full w-1/5 bg-black'></div>
+                    <div className='stairing h-full w-1/5 bg-black'></div>
+                </div>
+            </div>
+           <div ref={fullNavLinksRef} className="relative">
+         <div className="navlink flex w-full justify-between items-start">
+           <div className="p-1">
+             <div>
               <img
                 className="w-50 invert -ml-10 -mt-10 "
                 src="../../../../images/ss-logo-vector.png"
                 alt=""
               />
-            </div>
-          </div>
+            </div></div>
           <div onClick={()=>{setNavOpen(false)}} className="h-30 w-30 pt-3 cursor-pointer relative">
             <div className="h-full w-1 -rotate-45 origin-top bg-green-300 absolute"></div>
             <div className="h-full w-1 right-8 rotate-45 origin-top bg-green-300 absolute"></div>
@@ -123,9 +153,9 @@ const FullScreenNav = () => {
               </div>
             </div>
           </div>
-          <div className="link2 relative border-t-2">
+          <div className="link2 origin-top relative border-t-2">
             <h1 className="textAnimation text-[8vw] uppercase font-semibold text-center leading-[1] -mt-4">
-              Agence
+              &nbsp;Agence
             </h1>
             <div className="moveLink absolute text-black flex top-0 bg-green-400">
               <div className="moveX flex flex-nowrap items-center">
@@ -166,8 +196,8 @@ const FullScreenNav = () => {
               </div>
             </div>
           </div>
-          <div className="link relative border-t-2">
-            <h1 className="textAnimation text-[8vw] uppercase font-semibold text-center leading-[1] -mt-4">
+          <div className="link origin-top relative border-t-2">
+            <h1 className="textAnimation text-[8vw] uppercase font-semibold text-center leading-[1] -ml-70 -mt-4">
               Contact
             </h1>
             <div className="moveLink absolute text-black flex top-0 bg-green-400">
@@ -209,9 +239,9 @@ const FullScreenNav = () => {
               </div>
             </div>
           </div>
-          <div className="link2 relative border-2">
+          <div className="link2 origin-top relative border-2">
             <h1 className="textAnimation text-[8vw] uppercase font-semibold text-center leading-[1] -mt-4">
-              About
+               &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;About
             </h1>
             <div className="moveLink absolute text-black flex top-0 bg-green-400">
               <div className="moveX flex flex-nowrap items-center">
@@ -255,8 +285,8 @@ const FullScreenNav = () => {
         </div>
       </div>
       
-    </div>
-  );
-};
+        </div>
+    )
+}
 
-export default FullScreenNav;
+export default FullScreenNav
