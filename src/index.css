@@ -20,6 +20,9 @@ color: white;}
 .link:hover .moveLink{
     opacity: 1;
 }
+.link2:hover .moveLink{
+    opacity: 1;
+}
 @keyframes moveAnimation  {
     from{
         transform: translateX(0);

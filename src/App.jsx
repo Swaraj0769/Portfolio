@@ -13,15 +13,15 @@ const App = () => {
       <Link to='/agence'>Agence</Link>
       <Link to='/project'>Projects</Link> */}
 
-      {/* <Navbar /> */}
+      <Navbar />
 
       <FullScreenNav />
 
-      {/* <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/agence' element={<Agence />} />
-        <Route path='/project' element={<Projects />} />
-      </Routes> */}
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/agence' element={<Agence />} />
+          <Route path='/project' element={<Projects />} />
+        </Routes>
     </div>
   )
 }
