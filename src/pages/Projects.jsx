@@ -30,7 +30,6 @@ const Projects = (props) => {
       },
       scrollTrigger:{
         trigger: '.lol',
-        markers: true,
         start: 'top 100%',
         end: 'top -150%',
         scrub: true
@@ -46,7 +45,7 @@ const Projects = (props) => {
       <div className='-mt-5 lol'>
         {projects.map(function (elem, idx){
           return <div key={idx} className='hero w-full h-[400px] mb-4 flex gap-4'>
-          <ProjectCard image1={elem.image1} image2={elem.image2} />
+          <ProjectCard image1={elem.image1} image2={elem.image2} index={idx} />
         </div>
         })}
       </div>
