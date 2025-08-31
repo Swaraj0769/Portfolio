@@ -5,6 +5,7 @@ import HomeBottomText from '../components/home/HomeBottomText'
 import HomeMainHero from '../components/home/HomeMainHero'
 import Skills from '../components/pages/Skills'
 import About from '../components/pages/About'
+import Contact from '../components/pages/Contact'
 
 const Home = () => {
   return (
@@ -14,7 +15,7 @@ const Home = () => {
         <Video />
       </div>
       <div className='h-screen overflow-hidden w-[99vw] flex flex-col relative justify-between'>
-        <div className='flex items-center justify-between mr-18'>
+        <div className='flex items-between lg:items-center lg:justify-between justify-start mr-18'>
           <HomeHeroText />
           <HomeMainHero />
         </div>
@@ -23,6 +24,12 @@ const Home = () => {
       </>
       <>
         <Skills />
+      </>
+      <>
+        <About />
+      </>
+      <>
+        <Contact />
       </>
     </div>
   )
