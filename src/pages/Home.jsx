@@ -10,10 +10,10 @@ const Home = () => {
   return (
     <div>
       <>
-      <div className='h-screen w-screen fixed'>
+      <div className='h-screen w-[99vw] fixed'>
         <Video />
       </div>
-      <div className='h-screen overflow-hidden w-screen flex flex-col relative justify-between'>
+      <div className='h-screen overflow-hidden w-[99vw] flex flex-col relative justify-between'>
         <div className='flex items-center justify-between mr-18'>
           <HomeHeroText />
           <HomeMainHero />
@@ -21,8 +21,9 @@ const Home = () => {
         <HomeBottomText />
       </div>
       </>
-      <Skills />
-      <About />
+      <>
+        <Skills />
+      </>
     </div>
   )
 }
