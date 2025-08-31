@@ -4,6 +4,8 @@ import Agence from './pages/Agence'
 import Projects from './pages/Projects'
 import Navbar from './components/Navigation/Navbar'
 import FullScreenNav from './components/Navigation/FullScreenNav'
+import Skills from './components/pages/Skills'
+import About from './components/pages/About'
 
 const App = () => {
 
@@ -21,6 +23,8 @@ const App = () => {
           <Route path='/' element={<Home />} />
           <Route path='/agence' element={<Agence />} />
           <Route path='/project' element={<Projects />} />
+          <Route path='/skill' element={<Skills />} />
+          <Route path='/about' element={<About />} />
         </Routes>
     </div>
   )

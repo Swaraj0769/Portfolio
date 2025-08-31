@@ -3,10 +3,13 @@ import Video from '../components/home/Video'
 import HomeHeroText from '../components/home/HomeHeroText'
 import HomeBottomText from '../components/home/HomeBottomText'
 import HomeMainHero from '../components/home/HomeMainHero'
+import Skills from '../components/pages/Skills'
+import About from '../components/pages/About'
 
 const Home = () => {
   return (
     <div>
+      <>
       <div className='h-screen w-screen fixed'>
         <Video />
       </div>
@@ -17,6 +20,9 @@ const Home = () => {
         </div>
         <HomeBottomText />
       </div>
+      </>
+      <Skills />
+      <About />
     </div>
   )
 }

@@ -12,7 +12,7 @@ const Navbar = () => {
             <div >
                 <div>
                   <img
-                    className="w-50 invert -ml-10 -mt-10 "
+                    className="w-50 invert -ml-10 -mt-10"
                     src="../../../../images/ss-logo-vector.png"
                     alt=""
                   />
@@ -26,7 +26,7 @@ const Navbar = () => {
                 onMouseLeave={() => {
                     navGreenRef.current.style.height = '0%'
                 }}
-                className='lg:h-12 h-10 bg-black relative lg:w-[16vw] w-48'>
+                className='lg:h-12 h-10 cursor-pointer bg-black relative lg:w-[16vw] w-48'>
                 <div ref={navGreenRef} className='bg-green-300 transition-all absolute top-0 h-0 w-full'></div>
                 <div className='relative h-full lg:px-10 px-8 flex flex-col justify-center items-end lg:gap-1.5 gap-0.5'>
                     <div className="lg:w-18 w-12 h-0.5 bg-white"></div>

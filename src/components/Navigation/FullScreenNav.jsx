@@ -3,10 +3,13 @@ import gsap from 'gsap'
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import { NavbarContext } from '../../context/NavContext'
 import Projects from '../../pages/Projects'
+import { useNavigate } from 'react-router-dom'
 
 const FullScreenNav = () => {
     const fullNavLinksRef = useRef(null)
     const fullScreenRef = useRef(null)
+
+    const navigation = useNavigate()
 
     const [navOpen, setNavOpen] = useContext(NavbarContext)
 
@@ -84,6 +87,20 @@ const FullScreenNav = () => {
         }
     }, [navOpen])
 
+     const handleNavigation =()=>{
+      navigation('/project'),
+      useGSAP(function () {
+        if (navOpen) {
+
+            gsapAnimation()
+        } else {
+
+            gsapAnimationReverse()
+
+        }
+    }, [navOpen])
+    }
+
     return (
         <div ref={fullScreenRef} id='fullscreennav' className='fullscreennav hidden text-white overflow-hidden h-screen w-full z-50 absolute'>
             <div className='h-screen w-full fixed'>
@@ -111,7 +128,7 @@ const FullScreenNav = () => {
           </div>
         </div>
         <div className="py-20">
-          <div className="link origin-top relative border-t-2">
+          <div onClick={handleNavigation} className="link cursor-pointer origin-top relative border-t-2">
             <h1 className="textAnimation text-[8vw] uppercase font-semibold text-center leading-[1] -mt-4">
               Projects
             </h1>
@@ -154,7 +171,7 @@ const FullScreenNav = () => {
               </div>
             </div>
           </div>
-          <div className="link2 origin-top relative border-t-2">
+          <div onClick={handleNavigation} className="link2 cursor-pointer origin-top relative border-t-2">
             <h1 className="textAnimation text-[8vw] uppercase font-semibold text-center leading-[1] -mt-4">
               &nbsp;Agence
             </h1>
@@ -197,7 +214,7 @@ const FullScreenNav = () => {
               </div>
             </div>
           </div>
-          <div className="link origin-top relative border-t-2">
+          <div onClick={handleNavigation} className="link cursor-pointer origin-top relative border-t-2">
             <h1 className="textAnimation text-[8vw] uppercase font-semibold text-center leading-[1] -ml-70 -mt-4">
               Contact
             </h1>
@@ -240,7 +257,7 @@ const FullScreenNav = () => {
               </div>
             </div>
           </div>
-          <div className="link2 origin-top relative border-2">
+          <div onClick={handleNavigation} className="link2 cursor-pointer origin-top relative border-2">
             <h1 className="textAnimation text-[8vw] uppercase font-semibold text-center leading-[1] -mt-4">
                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;About
             </h1>
