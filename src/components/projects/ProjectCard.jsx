@@ -9,7 +9,7 @@ const ProjectCard = (props) => {
     'https://cyberpunk-liart.vercel.app/',
     'https://location-tracker-n422.onrender.com',
     'https://baat-gpt.onrender.com',
-    'https://baat-gpt.onrender.com',
+    'https://portfolio-self-rho-54.vercel.app/project',
     'https://baat-gpt.onrender.com'
   ]
 
